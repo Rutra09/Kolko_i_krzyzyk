@@ -1,0 +1,167 @@
+<html>
+<head>
+		<meta charset="utf-8" />
+<style>
+body {
+	color: green;
+	background-color: grey;
+}	
+table {
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 25%;
+
+}
+table td, table th {
+	width: 100px;
+	height: 100px;
+  border: 1px solid black;
+}
+table tr:first-child td  {
+  border-top: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
+}
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+</style>
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td id="t00"><img id="f00" src="" /></td>
+			<td id="t01"><img id="f01" src="" /></td>
+			<td id="t02"><img id="f02" src="" /></td>
+		</tr>
+		<tr>
+			<td id="t10"><img id="f10" src="" /></td>
+			<td id="t11"><img id="f11" src="" /></td>
+			<td id="t12"><img id="f12" src="" /></td>
+		</tr>
+		<tr>
+			<td id="t20"><img id="f20" src="" /></td>
+			<td id="t21"><img id="f21" src="" /></td>
+			<td id="t22"><img id="f22" src="" /></td>
+		</tr>
+
+	</table>
+</body>
+
+<script type="text/javascript">
+	var whoNext = "circle.png";	
+	var checkWinner = function () {
+
+		if( 
+		document.getElementById('f00').src.endsWith(whoNext) &&
+		document.getElementById('f01').src.endsWith(whoNext) &&
+		document.getElementById('f02').src.endsWith(whoNext) 
+			||
+		document.getElementById('f10').src.endsWith(whoNext) &&
+		document.getElementById('f11').src.endsWith(whoNext) &&
+		document.getElementById('f12').src.endsWith(whoNext) 
+			||
+		document.getElementById('f20').src.endsWith(whoNext) &&
+		document.getElementById('f21').src.endsWith(whoNext) &&
+		document.getElementById('f22').src.endsWith(whoNext) 
+			||
+		document.getElementById('f00').src.endsWith(whoNext) &&
+		document.getElementById('f10').src.endsWith(whoNext) &&
+		document.getElementById('f20').src.endsWith(whoNext) 
+			||
+
+		document.getElementById('f02').src.endsWith(whoNext) &&
+		document.getElementById('f22').src.endsWith(whoNext) &&
+		document.getElementById('f12').src.endsWith(whoNext) 
+			||
+
+		document.getElementById('f02').src.endsWith(whoNext) &&
+		document.getElementById('f11').src.endsWith(whoNext) &&
+		document.getElementById('f20').src.endsWith(whoNext)
+			||
+
+		document.getElementById('f01').src.endsWith(whoNext) &&
+		document.getElementById('f11').src.endsWith(whoNext) &&
+		document.getElementById('f21').src.endsWith(whoNext) 
+			||
+
+		document.getElementById('f00').src.endsWith(whoNext) &&
+		document.getElementById('f11').src.endsWith(whoNext) &&
+		document.getElementById('f22').src.endsWith(whoNext) 
+		
+
+
+		) {
+			alert("Winner: "+whoNext);
+			document.getElementById("t00").onclick =null;
+			document.getElementById("t01").onclick =null;
+			document.getElementById("t02").onclick =null;
+			document.getElementById("t10").onclick =null;
+			document.getElementById("t11").onclick =null;
+			document.getElementById("t12").onclick =null;
+			document.getElementById("t20").onclick =null;
+			document.getElementById("t21").onclick =null;
+			document.getElementById("t22").onclick =null;
+
+		}
+		if (
+			document.getElementById('f00').src.endsWith(whoNext) &&
+			document.getElementById('f01').src.endsWith(whoNext) &&
+			document.getElementById('f02').src.endsWith(whoNext) &&
+			document.getElementById('f10').src.endsWith(whoNext) &&
+			document.getElementById('f11').src.endsWith(whoNext) &&
+			document.getElementById('f12').src.endsWith(whoNext) &&
+			document.getElementById('f20').src.endsWith(whoNext) &&
+			document.getElementById('f21').src.endsWith(whoNext) &&
+			document.getElementById('f22').src.endsWith(whoNext)
+		) {
+			alert("No winner!");
+			document.getElementById("t00").onclick =null;
+			document.getElementById("t01").onclick =null;
+			document.getElementById("t02").onclick =null;
+			document.getElementById("t10").onclick =null;
+			document.getElementById("t11").onclick =null;
+			document.getElementById("t12").onclick =null;
+			document.getElementById("t20").onclick =null;
+			document.getElementById("t21").onclick =null;
+			document.getElementById("t22").onclick =null;
+
+		}
+
+
+	}
+	var insertImage = function (cell, image) {
+		document.getElementById(cell).onclick = null;
+		document.getElementById(image).src = whoNext ;
+		checkWinner();
+		if (whoNext == "circle.png") {
+			whoNext = "ixe.png" ;	
+		} else {
+			whoNext = "circle.png"	
+		}
+		
+		
+	}
+	//alert("ab");
+	 document.getElementById('t00').onclick = function() {insertImage ("t00", "f00") ;};
+	 document.getElementById('t01').onclick = function() {insertImage ("t01", "f01") ;};
+	 document.getElementById('t02').onclick = function() {insertImage ("t02", "f02") ;};
+	 document.getElementById('t10').onclick = function() {insertImage ("t10", "f10") ;};
+	 document.getElementById('t11').onclick = function() {insertImage ("t11", "f11") ;};
+	 document.getElementById('t12').onclick = function() {insertImage ("t12", "f12") ;};
+	 document.getElementById('t20').onclick = function() {insertImage ("t20", "f20") ;};
+	 document.getElementById('t21').onclick = function() {insertImage ("t21", "f21") ;};
+	 document.getElementById('t22').onclick = function() {insertImage ("t22", "f22") ;};
+</script>
+</html>
