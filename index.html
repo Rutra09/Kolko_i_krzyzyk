@@ -5,12 +5,21 @@
 body {
 	color: green;
 	background-color: grey;
-}
+}	
+#panel {
 
+width: 300px;
+margin: auto;
+margin-top: 25%;	
+}
+#text{
+color: red;
+font-size:30px
+}
 table {
   border-collapse: collapse;
-  margin: auto;
-  margin-top: 25%;
+  
+  
 
 }
 table td, table th {
@@ -39,7 +48,10 @@ img {
 </style>
 </head>
 <body>
-
+	<div id="panel">
+<div id="text" >
+następny gracz kółko
+</div>
 	<table>
 		<tr>
 			<td id="t00"><img id="f00" src="" /></td>
@@ -58,6 +70,7 @@ img {
 		</tr>
 
 	</table>
+</div>
 </body>
 
 <script type="text/javascript">
@@ -104,7 +117,11 @@ img {
 
 
 		) {
-			alert("Winner: "+whoNext);
+			if (whoNext == "circle.png"){
+				document.getElementById('text').innerHTML ='Zwycięsca kółko';
+			} else {			
+				document.getElementById('text').innerHTML ='Zwycięsca krzyżyk';
+			}
 			document.getElementById("t00").onclick =null;
 			document.getElementById("t01").onclick =null;
 			document.getElementById("t02").onclick =null;
@@ -127,7 +144,7 @@ img {
 			document.getElementById('f21').src.endsWith(whoNext) &&
 			document.getElementById('f22').src.endsWith(whoNext)
 		) {
-			alert("No winner!");
+			document.getElementById('text').innerHTML ='No winner!';
 			document.getElementById("t00").onclick =null;
 			document.getElementById("t01").onclick =null;
 			document.getElementById("t02").onclick =null;
@@ -145,15 +162,23 @@ img {
 	var insertImage = function (cell, image) {
 		document.getElementById(cell).onclick = null;
 		document.getElementById(image).src = whoNext ;
+		if (whoNext == "circle.png"){
+			document.getElementById('text').innerHTML ='następny gracz krzyżyk';
+		} else {
+			document.getElementById('text').innerHTML ='następny gracz kółko';
+		}
 		checkWinner();
+		
+		
+
 		if (whoNext == "circle.png") {
 			whoNext = "ixe.png" ;	
 		} else {
 			whoNext = "circle.png"	
 		}
 		
-		
 	}
+
 	//alert("ab");
 	 document.getElementById('t00').onclick = function() {insertImage ("t00", "f00") ;};
 	 document.getElementById('t01').onclick = function() {insertImage ("t01", "f01") ;};
